@@ -1,5 +1,5 @@
+use sha2::{Digest, Sha256, digest::Update};
 use std::{u64, vec::Vec};
-use sha2::{ Sha256, Digest };
 
 // https://doc.rust-lang.org/std/hash/index.html
 
@@ -12,27 +12,35 @@ struct BlockHash {
 struct ExampleCoinBlock {
     previous_block_hash: String,
     transaction_list: Vec<String>,
-    block_hash: BlockHash,
+    block_hash: Sha256,
 }
 
 impl ExampleCoinBlock {
-    pub fn new(previous_block_hash_value: String, transaction_list_value: Vec<String>, block_hash_value: BlockHash) -> Self {
+    pub fn new(
+        previous_block_hash_value: String,
+        transaction_list_value: Vec<String>,
+        block_hash_value: Sha256,
+    ) -> Self {
         Self {
             previous_block_hash: previous_block_hash_value,
             transaction_list: transaction_list_value,
             block_hash: block_hash_value,
         }
     }
-    fn update_block_hash( &self ) -> Self {
+    pub fn update_block_hash(&self) -> Self {
         &self.transaction_list.push(self.previous_block_hash);
-        
+
         let block_data = self.transaction_list.join("-");
 
-        let block_hash = Sha256::new()
-            .update(block_data)
-            .finalize();
+        let mut hash = Sha256::new();
+        hash.update(block_data);
+        hash.finalize();
 
-        block_hash
+        Self {
+            previous_block_hash: "".to_string(),
+            transaction_list: vec!["hei".to_string()],
+            block_hash: hash,
+        }
     }
 }
 
@@ -42,13 +50,13 @@ fn main() {
     let first_coin_block = ExampleCoinBlock {
         previous_block_hash: "Initial string".to_string(),
         transaction_list: vec!["T1".to_string(), "T2".to_string()],
-        block_hash: BlockHash{block_hash: 3984579}
+        block_hash: Sha256::new(),
     };
 
     let second_coin_block = ExampleCoinBlock::new(
         first_coin_block.previous_block_hash,
         vec!["T3".to_string(), "T4".to_string()],
-        BlockHash{block_hash: 67828376542}
+        Sha256::new(),
     );
 
     println!("{:?}", first_coin_block.transaction_list);
