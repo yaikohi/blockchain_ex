@@ -3,9 +3,3 @@ class Transaction:
         self.sender = sender
         self.recipient = recipient
         self.value = value
-    
-    if self.sender == "genesis":
-        identity = "genesis"
-    else:
-        identity = self.sender.identity
-        
