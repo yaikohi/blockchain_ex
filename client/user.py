@@ -1,3 +1,8 @@
+import cryptography
+import hashlib
+import logging
+import datetime
+
 class User:
     """A user with a unique id, a name, and a balance containing currency.
     

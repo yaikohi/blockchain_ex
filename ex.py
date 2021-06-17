@@ -1,8 +1,12 @@
-import json
+
+"""
+File for testing modules.
+"""
+
 import time
 
-from block import Block
-from blockchain import Blockchain
+from blockchain.blockchain import Blockchain
+from blockchain.block import Block
 
 new_ex_coin = Blockchain()
 # new_ex_coin.add_block((1, "10/02/2021", { "amount": 4 }))
