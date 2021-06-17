@@ -19,4 +19,5 @@ Using the built-in typing module.
 # Sources
 1. [Develop a blockchain application from scratch in Python](https://gist.github.com/satwikkansal/4a857cad2797b9d199547a752933a715) by [Satwik Kansal](https://gist.github.com/satwikkansal)
 2. [Google docstrings](https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings)
-3. [Python Blockchain](https://www.tutorialspoint.com/python_blockchain/python_blockchain_introduction.htm) from Tutorialspoint.com
+3. [Python Blockchain](https://www.tutorialspoint.com/python_blockchain/python_blockchain_introduction.htm) from Tutorialspoint.com.
+    - NOTE: this tutorial uses [pyCryptodome](https://pycryptodome.readthedocs.io/en/latest/src/introduction.html)
