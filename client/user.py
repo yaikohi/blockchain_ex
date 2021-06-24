@@ -6,9 +6,19 @@ from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
 
 
-class Client:
+class Client:    
     """Client class that contains the public- and the private key of the instance.
     
+    Attributes:
+        _private_key: A unique (hidden) key of the client used to generate a 
+            signature for each blockchain transaction the client sends out. 
+            Used in combination with the _public_key.
+        _public_key: A unique public key of the client used to generate a 
+            signature for each blockchain transaction the client sends out. 
+            Used in combination with the _private_key.
+        _signer: A unique signing key of the client.
+            Used for signing a transaction on the blockchain.
+
     Example:
         Instantiating the class by Object = Client() and 
         then calling Object.identity returns the public key.
