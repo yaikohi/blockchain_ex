@@ -38,7 +38,8 @@ class Block:
     """ A block on the blockchain.
 
     Attributes:
-        verified_transactions (list): List of transactions.
+        verified_transactions (list[:obj: client.transaction.Transaction]): List of verified transactions, 
+            a transaction gets verified after receiving a signature of a client.
         previous_block_hash (str): Hash of the previous block on the blockchain. 
         Nonce (str): A unique value for the instantiated block.
     """
