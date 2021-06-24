@@ -1,6 +1,5 @@
 /target
-old
 venv
 __pycache__
 .vscode
-__pycache__/.
+__pycache__
