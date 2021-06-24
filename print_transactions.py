@@ -1,10 +1,10 @@
 
-"""
-File for testing modules.
+"""Creates a list of transactions and prints them out.
 """
 
 
-from client import * 
+from client.client import *
+from client.transaction import *
 
 Dinesh = Client()
 Ramesh = Client()
@@ -88,17 +88,21 @@ t10 = Transaction(
 t10.sign_transaction()
 transactions.append(t10)
 
-def display_transaction(transaction):
-    # for transaction in transactions:
-    dict = transaction.to_dict()
-    print ("sender: " + dict['sender'])
-    print ('-----')
-    print ("recipient: " + dict['recipient'])
-    print ('-----')
-    print ("value: " + str(dict['value']))
-    print ('-----')
-    print ("time: " + str(dict['time']))
-    print ('-----')
+def display_transaction(transaction: Transaction):
+   """Prints the transactions to the console.
+
+   Args:
+       transaction (Transaction): A transaction object.
+   """   
+   dict = transaction.to_dict()
+   print ("sender: " + dict['sender'])
+   print ('-----')
+   print ("recipient: " + dict['recipient'])
+   print ('-----')
+   print ("value: " + str(dict['value']))
+   print ('-----')
+   print ("time: " + str(dict['time']))
+   print ('-----')
 
 
 for transaction in transactions:
