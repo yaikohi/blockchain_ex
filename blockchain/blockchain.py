@@ -1,8 +1,9 @@
 import time
-from typing import List
-import time
 import json
 from hashlib import sha256
+
+# Global variable
+LAST_BLOCK_HASH = ""
 
 
 class Blockchain:
@@ -34,25 +35,25 @@ class Blockchain:
 
 
 class Block:
+    """ A block on the blockchain.
+
+    Attributes:
+        verified_transactions (list): List of transactions.
+        previous_block_hash (str): Hash of the previous block on the blockchain. 
+        Nonce (str): A unique value for the instantiated block.
+    """
+
     def __init__(self):
-        """ Constructor for the `Block` class.
-
-        Args:
-            index: Unique ID of the block.
-            transactions: List of transactions.
-            timestamp: Time of generation of the block.
-            previous_hash: Hash of the previous block in the chain which this block is part of.
-
-        Returns:
-            An instance of the `Block` class. A block object.
-        """
         self.verified_transactions = []
         self.previous_block_hash = ""
         self.Nonce = ""
- 
+
     def compute_hash(self):
+        """Computes the hash of the block instance.
+
+        Returns: 
+            (str): Hashed value.
         """
-        Returns the hash of the block instance.
-        """
-        block_string = json.dumps(self.__dict__, sort_keys=True) # The string equivalent also considers the previous_hash field now
+        block_string = json.dumps(
+            self.__dict__, sort_keys=True)  # The string equivalent also considers the previous_hash field now
         return sha256(block_string.encode()).hexdigest()
