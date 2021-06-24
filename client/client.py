@@ -3,12 +3,12 @@ import Crypto
 import Crypto.Random
 from Crypto.Hash import SHA
 from Crypto.PublicKey import RSA
-from Crypto.Signature import PKCS1_v1_5
+from Crypto.Signature import PKCS1_OAEP
 
 
 class Client:    
-    """Client class that contains the public- and the private key of the instance.
-    
+    """Applies signatures to transactions made on the blockchain. 
+
     Attributes:
         _private_key: A unique (hidden) key of the client used to generate a 
             signature for each blockchain transaction the client sends out. 
@@ -27,14 +27,14 @@ class Client:
         random = Crypto.Random.new().read
         self._private_key = RSA.generate(1024, random)
         self._public_key = self._private_key.publickey()
-        self._signer = PKCS1_v1_5.new(self._private_key)
+        self._signer = PKCS1_OAEP.new(self._private_key)
 
     @property
     def public_key(self) -> str:
         """Returns the public key.
 
         Returns:
-            public_key[str]: a hexadecimal number. 
+            public_key[str]: a hexadecimal public key. 
         """
         return binascii.hexlify(self._public_key.exportKey(format='DER')).decode('ascii')
 
@@ -45,9 +45,9 @@ class User:
     -- TODO: add extra info here --
     
     Attributes:
-        id: a unique key id for specifying the user
-        name: the name of the user
-        balance: a value describing the currency available to the user
+        id[int]: A unique key id that specifies the user.
+        name[str]: The name of the user.
+        balance[float]: a value describing the currency available to the user.
     """ 
     def __init__(self, 
                  id: int, 
