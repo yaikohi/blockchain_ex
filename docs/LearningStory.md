@@ -34,13 +34,11 @@ PKCS-OAEP is an asymmetric cipher based on RSA and OAEP padding. Its used for en
 [RFC8017](https://datatracker.ietf.org/doc/html/rfc8017#section-7.1)
 [PyCryptoDome PKCS#1 OAEP (RSA) - docs](https://pycryptodome.readthedocs.io/en/latest/src/cipher/oaep.html)
 
-## File structure
-
 ## Module imports
 
 [How to write an **init**.py/ how to import modules in python](https://towardsdatascience.com/whats-init-for-me-d70a312da583)
 
-# Sources
+# Tutorial sources
 
 1. [Develop a blockchain application from scratch in Python](https://gist.github.com/satwikkansal/4a857cad2797b9d199547a752933a715) by [Satwik Kansal](https://gist.github.com/satwikkansal)
 2. [Google docstrings](https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings)
