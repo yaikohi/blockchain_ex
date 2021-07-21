@@ -22,7 +22,7 @@ class Blockchain:
         A function to generate a genesis block and append it to
         the chain.
         """
-        genesis_block = Block(0, [], time.time(), "0")
+        genesis_block = Block([], time.time(), "0")
         genesis_block.hash = genesis_block.compute_hash()
         self.chain.append(genesis_block)
 
